@@ -22,6 +22,8 @@ def _(mo):
 
 @app.cell
 def _():
+    import joblib
+
     import matplotlib.pyplot as plt
     import pandas as pd
     import seaborn as sns
@@ -42,6 +44,7 @@ def _():
         StandardScaler,
         classification_report,
         confusion_matrix,
+        joblib,
         pd,
         sns,
         train_test_split,
@@ -142,7 +145,6 @@ def _(mo):
 def _(KNNImputer, X_train, numeric_features):
     imputer = KNNImputer(n_neighbors=8)
     imputer.fit_transform(X_train[numeric_features]).shape
-
     return (imputer,)
 
 
@@ -273,7 +275,8 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(joblib, model_pipeline):
+    joblib.dump(model_pipeline, "../artifacts/logistic_regression.pkl")
     return
 
 

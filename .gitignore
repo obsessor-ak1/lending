@@ -1,2 +1,13 @@
-# Ignoring data files
+# Ignoring data and model files
 data/
+artifacts/
+
+# env files
+**/.env
+
+# Ignoring cache and installation files
+**/node_modules/
+**/__pycache__/
+
+# Ignoring notebook session details
+notebooks/__marimo__/session/
