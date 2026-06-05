@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  phone_no   String   @unique
+  password   String
+  created_at DateTime @default(now())
+  verified   Boolean  @default(false)
+
+  profile           Profile?
+  verificationCodes VerificationCode[]
+
+  application_filled   Application[] @relation("borrower")
+  application_received Application[] @relation("lender")
+}
+
+model Profile {
+  user_id                  Int     @id
+  name                     String?
+  bio                      String
+  age                      Int
+  income                   Float
+  home_ownership           Int
+  employment_duration      Int
+  prev_default             Boolean
+  cred_hist_length         Int
+  lender_status            Boolean
+  max_amount               Float?
+  min_lender_interest_rate Float?
+  max_lender_interest_rate Float?
+
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model VerificationCode {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  code       String
+  created_at DateTime @default(now())
+  expires_at DateTime
+  used       Boolean  @default(false)
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ApplicationPurpose {
+  VENTURE
+  EDUCATION
+  MEDICAL
+  PERSONAL
+  DEBTCONSOLIDATION
+  HOMEIMPROVEMENT
+  OTHER
+
+  @@map("Purpose")
+}
+
+model Application {
+  id            Int                @id @default(autoincrement())
+  by            Int
+  to            Int
+  purpose       ApplicationPurpose
+  description  String
+  amount        Float
+  interest_rate Float
+  status        ApplicationStatus
+  remarks       String?
+  created_at    DateTime           @default(now())
+  updated_at    DateTime?
+  borrower      User               @relation("borrower", fields: [by], references: [id], onDelete: NoAction)
+  lender        User               @relation("lender", fields: [to], references: [id], onDelete: NoAction)
+}

@@ -1,0 +1,193 @@
+.verifyBody {
+  --honey: #F5A623;
+  --honey-dark: #C8841A;
+  --honey-light: #FEF6E4;
+  --dark: #16120A;
+  --muted: #6B5E45;
+  --border: rgba(0, 0, 0, 0.1);
+
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  background: var(--honey-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP BAR */
+.topBar {
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+}
+
+.brandBee {
+  width: 34px;
+  height: 34px;
+  background: var(--honey);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+.brandName {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--dark);
+}
+
+.brandName span {
+  color: var(--honey-dark);
+}
+
+.backLink {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--dark);
+}
+
+/* MAIN LAYOUT */
+.verifyWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.verifyCard {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(22, 18, 10, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 36px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .verifyCard {
+    padding: 28px 20px;
+  }
+}
+
+/* HEADINGS */
+.authHeading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.authSub {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* OTP INPUTS */
+.otpInput {
+  width: 52px;
+  height: 58px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+  caret-color: var(--honey);
+}
+
+@media (max-width: 380px) {
+  .otpInput {
+    width: 42px;
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}
+
+.otpInput:focus {
+  border-color: var(--honey);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15);
+}
+
+.otpInputFilled {
+  border-color: var(--honey-dark);
+  background: var(--honey-light);
+}
+
+/* SUBMIT BTN */
+.btnHoney {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: none;
+  background: var(--honey);
+  color: var(--dark);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 3px 14px rgba(245, 166, 35, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 6px;
+}
+
+.btnHoney:hover {
+  background: var(--honey-dark);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(245, 166, 35, 0.45);
+}
+
+/* RESEND LINK */
+.resendLink {
+  font-weight: 700;
+  color: #bbb;
+  text-decoration: none;
+  pointer-events: none;
+  transition: color 0.3s;
+}
+
+.resendLinkActive {
+  color: var(--honey-dark);
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.resendLinkActive:hover {
+  text-decoration: underline;
+}

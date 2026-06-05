@@ -1,0 +1,148 @@
+.successBody {
+  --honey: #F5A623;
+  --honey-dark: #C8841A;
+  --honey-light: #FEF6E4;
+  --dark: #16120A;
+  --muted: #6B5E45;
+  --border: rgba(0, 0, 0, 0.1);
+
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  background: var(--honey-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP BAR */
+.topBar {
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+}
+
+.brandBee {
+  width: 34px;
+  height: 34px;
+  background: var(--honey);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+.brandName {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--dark);
+}
+
+.brandName span {
+  color: var(--honey-dark);
+}
+
+/* MAIN LAYOUT */
+.successWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.successCard {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(22, 18, 10, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 36px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .successCard {
+    padding: 28px 20px;
+  }
+}
+
+/* CHECKMARK */
+.checkmark {
+  width: 64px;
+  height: 64px;
+  background: #F0FDF4;
+  border-radius: 50%;
+  border: 1px solid #DCFCE7;
+  text-align: center;
+  line-height: 64px;
+  font-size: 28px;
+  margin: 0 auto 24px;
+}
+
+/* HEADINGS */
+.successHeading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.successSub {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* CTA BTN */
+.btnCta {
+  display: inline-block;
+  background: var(--honey);
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 32px;
+  border-radius: 24px;
+  transition: all 0.2s;
+  box-shadow: 0 3px 14px rgba(245, 166, 35, 0.35);
+}
+
+.btnCta:hover {
+  background: var(--honey-dark);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(245, 166, 35, 0.45);
+}
+
+/* FOOTER NOTE */
+.footerText {
+  margin: 0;
+  font-size: 12px;
+  color: #bbb;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.footerText a {
+  color: var(--honey-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footerText a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,229 @@
+.browseContainer {
+  --honey: #F5A623;
+  --honey-dark: #C8841A;
+  --honey-light: #FEF6E4;
+  --dark: #16120A;
+  --muted: #6B5E45;
+  --border: rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* GRID */
+.browseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* CARD */
+.lenderCard {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(22, 18, 10, 0.04);
+  border: 1px solid rgba(245, 166, 35, 0.12);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lenderCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(22, 18, 10, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.avatarInitials {
+  width: 44px;
+  height: 44px;
+  background: var(--honey-light);
+  color: var(--honey-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+}
+
+.lenderName {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.lenderBio {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 3.85rem;
+  /* ~3 lines */
+}
+
+.cardFooter {
+  border-top: 1px solid #f2ede4;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rateLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rateValue {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--honey-dark);
+}
+
+/* DETAIL PAGE */
+.detailContainer {
+  --honey: #F5A623;
+  --honey-dark: #C8841A;
+  --honey-light: #FEF6E4;
+  --dark: #16120A;
+  --muted: #6B5E45;
+  --border: rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detailCard {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(22, 18, 10, 0.06);
+  border: 1px solid rgba(245, 166, 35, 0.12);
+  padding: 40px;
+}
+
+@media (max-width: 640px) {
+  .detailCard {
+    padding: 24px 16px;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--dark);
+  border-bottom: 2px solid var(--honey-light);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionTitle:first-of-type {
+  margin-top: 0;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoValue {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.bioBlock {
+  background: var(--honey-light);
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  font-size: 0.9rem;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.btnHoney {
+  background: var(--honey);
+  color: var(--dark);
+  border: none;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(245, 166, 35, 0.25);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.btnHoney:hover {
+  background: var(--honey-dark);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(245, 166, 35, 0.35);
+}
+
+.btnBack {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  transition: color 0.15s;
+}
+
+.btnBack:hover {
+  color: var(--dark);
+}
