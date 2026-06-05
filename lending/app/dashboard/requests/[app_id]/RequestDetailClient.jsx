@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import StatusAlert from "../../application/components/StatusAlert";
 import ApplicantDetailsPanel from "./components/ApplicantDetailsPanel";
 import ApplicationSpecsPanel from "./components/ApplicationSpecsPanel";
+import LoanRiskPanel from "./components/LoanRiskPanel";
 
 const STATUS_CLASSES = {
   PENDING: "bg-amber-50 text-amber-800 border-amber-200",
@@ -12,7 +13,7 @@ const STATUS_CLASSES = {
   REJECTED: "bg-red-50 text-red-800 border-red-200",
 };
 
-export default function RequestDetailClient({ application }) {
+export default function RequestDetailClient({ application, riskAssessment }) {
   const router = useRouter();
   const [remarks, setRemarks] = useState(application.remarks || "");
   const [submitting, setSubmitting] = useState(false);
@@ -68,6 +69,8 @@ export default function RequestDetailClient({ application }) {
 
       {/* 2. Application specifications panel */}
       <ApplicationSpecsPanel application={application} currentStatus={currentStatus} />
+
+      {currentStatus === "PENDING" ? <LoanRiskPanel riskAssessment={riskAssessment} /> : null}
 
       {/* 3. Decision form / status display */}
       <div className="bg-white rounded-2xl border border-[rgba(245,166,35,0.12)] shadow-sm p-6">
