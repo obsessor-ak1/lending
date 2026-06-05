@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+huggingface_hub
+joblib
+pandas
+scikit-learn
