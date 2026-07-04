@@ -1,4 +1,4 @@
-# Lending Platform Monorepo
+# BorrowBee - Lending Platform Monorepo
 
 A full-stack peer-to-peer lending platform with:
 
