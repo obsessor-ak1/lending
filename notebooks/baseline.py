@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.4"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
@@ -277,6 +277,11 @@ def _(mo):
 @app.cell
 def _(joblib, model_pipeline):
     joblib.dump(model_pipeline, "../artifacts/logistic_regression.pkl")
+    return
+
+
+@app.cell
+def _():
     return
 
 

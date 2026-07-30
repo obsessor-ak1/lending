@@ -8,6 +8,5 @@ artifacts/
 # Ignoring cache and installation files
 **/node_modules/
 **/__pycache__/
-
 # Ignoring notebook session details
 notebooks/__marimo__/session/

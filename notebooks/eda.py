@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.4"
+__generated_with = "0.23.15"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
@@ -22,11 +22,13 @@ def _(mo):
 
 @app.cell
 def _():
+    import math
     import matplotlib.pyplot as plt
+    import numpy as np
     import pandas as pd
     import seaborn as sns
 
-    return pd, sns
+    return math, np, pd, plt, sns
 
 
 @app.cell
@@ -77,7 +79,7 @@ def _(mo):
     mo.md(r"""
     Clearly no specific correlation found here, except for some columns:
     * loan_status: int_rate and loan_percent_income
-    * loan_amnt: person_income (bovious)
+    * loan_amnt: person_income (obvious)
     """)
     return
 
@@ -136,6 +138,20 @@ def _(mo):
 
 
 @app.cell
+def _(data, math, numeric_cols, plt, sns):
+    numeric_features = [col for col in numeric_cols.columns if col != "loan_status"]
+    fig, axes = plt.subplots(math.ceil(len(numeric_features) / 3), 3, figsize=(14, 12))
+    axes = axes.flatten()
+    for idx, feature in enumerate(numeric_features):
+        axis = axes[idx]
+        sns.boxplot(
+            data=data, x="cb_person_default_on_file", y=feature, ax=axis, hue="loan_status"
+        )
+    plt.show()
+    return
+
+
+@app.cell
 def _(data, sns):
     sns.histplot(
         data=data, x="loan_grade", hue="loan_status", multiple="stack"
@@ -154,6 +170,51 @@ def _(mo):
     mo.md(r"""
     As expected the no. of defaulters increase as the loan grade decreases.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Feature Engineering
+    Now, based on the above analysis, we are going to create some meaningful features will help us improve our model.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### 1. Income Skewness
+    As we can see that the feature `person_income` is heavily skewed, this may cause extreme values to influence the model performance. For this we apply `log` transform to the `person_income` feature.
+    """)
+    return
+
+
+@app.cell
+def _(data, np, sns):
+    data["person_income"] = np.log(data["person_income"])
+    data.rename(columns={"person_income": "log_person_income"}, inplace=True)
+    sns.displot(
+        data=data,
+        x="log_person_income"
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### 1. Group-wise Features
+    A basic approach would be to use the group-wise values for numeric features, grouped by some categorical columns like `person_home_ownership` and `loan_intent`. Now, from above barplot, the most variable numeric features interacting with them seem to be `loan_amnt` and `person_income`
+    """)
+    return
+
+
+@app.cell
+def _(data):
+    data["median_home_log_income"] = data.groupby("person_home_ownership")["log_person_income"].transform("median")
+    data["home_mean_loan_amnt"] = data.groupby("person_home_ownership")["loan_amnt"].transform("mean")
     return
 
 
